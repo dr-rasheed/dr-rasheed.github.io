@@ -1,10 +1,11 @@
-import { useEffect, useState, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { format } from 'date-fns';
 import { ar } from 'date-fns/locale';
 import { Play, Square, ArrowRight, Volume2, VolumeX } from 'lucide-react';
+import articlesData from '../data/articles.json';
 
 interface Article {
   id: number;
@@ -17,26 +18,16 @@ interface Article {
 export default function Article() {
   const { id } = useParams<{ id: string }>();
   const [article, setArticle] = useState<Article | null>(null);
-  const [loading, setLoading] = useState(true);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const synth = window.speechSynthesis;
   const utteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
 
   useEffect(() => {
-    fetch(`/api/articles/${id}`)
-      .then((res) => {
-        if (!res.ok) throw new Error('Not found');
-        return res.json();
-      })
-      .then((data) => {
-        setArticle(data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error('Error fetching article:', err);
-        setLoading(false);
-      });
+    const foundArticle = articlesData.find(a => a.id === Number(id));
+    if (foundArticle) {
+      setArticle(foundArticle);
+    }
 
     return () => {
       if (synth.speaking) {
@@ -86,14 +77,6 @@ export default function Article() {
       setIsPaused(false);
     }
   };
-
-  if (loading) {
-    return (
-      <div className="flex justify-center items-center h-64">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600"></div>
-      </div>
-    );
-  }
 
   if (!article) {
     return (
