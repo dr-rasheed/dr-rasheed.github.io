@@ -1,6 +1,5 @@
 import { useState, useRef } from 'react';
 import { Upload, AlertCircle, CheckCircle2, FileText, FileCode2 } from 'lucide-react';
-import { parseString } from 'xml2js';
 import TurndownService from 'turndown';
 import mammoth from 'mammoth';
 
@@ -30,44 +29,79 @@ export default function Admin() {
     if (!response.ok) throw new Error('فشل في حفظ المقالات.');
   };
 
-  const processBloggerXml = (xmlText: string) => {
+  const processBloggerXml = async (xmlText: string) => {
     setIsProcessing(true);
     showMessage('جاري تحليل ملف بلوجر...', 'info');
 
-    parseString(xmlText, async (err, result) => {
-      if (err) {
-        showMessage('فشل في قراءة ملف XML.', 'error');
-        setIsProcessing(false);
-        return;
+    try {
+      const parser = new DOMParser();
+      const xmlDoc = parser.parseFromString(xmlText, "text/xml");
+      
+      const parseError = xmlDoc.getElementsByTagName("parsererror");
+      if (parseError.length > 0) {
+        throw new Error('فشل في قراءة ملف XML. تأكد من أنه ملف صالح.');
       }
 
-      try {
-        const feed = result.feed;
-        if (!feed || !feed.entry) throw new Error('لم يتم العثور على مقالات.');
+      const entries = xmlDoc.getElementsByTagName("entry");
+      if (entries.length === 0) {
+        throw new Error('لم يتم العثور على مقالات.');
+      }
 
-        const entries = feed.entry;
-        const articlesToSave = [];
-        let currentId = Date.now();
+      const articlesToSave = [];
+      let currentId = Date.now();
 
-        for (const entry of entries) {
-          const categories = entry.category || [];
-          const isPost = categories.some((c: any) => c.$ && c.$.term === 'http://schemas.google.com/blogger/2008/kind#post');
-          if (!isPost) continue;
+      for (let i = 0; i < entries.length; i++) {
+        const entry = entries[i];
+        
+        let isPost = false;
+        let isComment = false;
+        
+        // Check all elements to safely find blogger:type regardless of namespace parsing
+        const allElements = entry.getElementsByTagName("*");
+        for (let j = 0; j < allElements.length; j++) {
+          const nodeName = allElements[j].nodeName.toLowerCase();
+          if (nodeName === "blogger:type" || nodeName === "type") {
+            if (allElements[j].textContent === "POST") isPost = true;
+            if (allElements[j].textContent === "COMMENT") isComment = true;
+          }
+        }
 
-          const title = entry.title?.[0]?._ || entry.title?.[0] || 'بدون عنوان';
-          const htmlContent = entry.content?.[0]?._ || entry.content?.[0] || '';
-          if (!htmlContent) continue;
+        // Skip comments immediately
+        if (isComment) continue;
 
-          const markdownContent = turndownService.turndown(htmlContent);
-          const imgMatch = htmlContent.match(/<img[^>]+src="([^">]+)"/);
-          const imageUrl = imgMatch ? imgMatch[1] : null;
-          const date = entry.published?.[0] || new Date().toISOString();
+        // Fallback to category check if blogger:type wasn't explicitly POST
+        if (!isPost) {
+          const categories = entry.getElementsByTagName("category");
+          for (let j = 0; j < categories.length; j++) {
+            if (categories[j].getAttribute("term")?.includes("kind#post")) {
+              isPost = true;
+              break;
+            }
+          }
+        }
+        
+        if (!isPost) continue;
 
-          currentId++;
-          const safeTitle = title.replace(/[^a-zA-Z0-9\u0600-\u06FF]/g, '-').substring(0, 50);
-          const filename = `${currentId}-${safeTitle}.md`;
-          
-          const fileContent = `---
+        const titleNode = entry.getElementsByTagName("title")[0];
+        const title = titleNode ? titleNode.textContent || 'بدون عنوان' : 'بدون عنوان';
+        
+        const contentNode = entry.getElementsByTagName("content")[0];
+        const htmlContent = contentNode ? contentNode.textContent || '' : '';
+        
+        if (!htmlContent) continue;
+
+        const markdownContent = turndownService.turndown(htmlContent);
+        const imgMatch = htmlContent.match(/<img[^>]+src="([^">]+)"/);
+        const imageUrl = imgMatch ? imgMatch[1] : null;
+        
+        const publishedNode = entry.getElementsByTagName("published")[0];
+        const date = publishedNode ? publishedNode.textContent || new Date().toISOString() : new Date().toISOString();
+
+        currentId++;
+        const safeTitle = title.replace(/[^a-zA-Z0-9\u0600-\u06FF]/g, '-').substring(0, 50);
+        const filename = `${currentId}-${safeTitle}.md`;
+        
+        const fileContent = `---
 id: ${currentId}
 title: "${title.replace(/"/g, '\\"')}"
 image_url: "${imageUrl || ''}"
@@ -75,27 +109,26 @@ created_at: "${date}"
 ---
 
 ${markdownContent}`;
-          
-          articlesToSave.push({
-            filename,
-            content: fileContent,
-            metadata: { id: currentId, title, image_url: imageUrl || null, created_at: date, filename }
-          });
-        }
-
-        if (articlesToSave.length === 0) throw new Error('لا توجد مقالات صالحة.');
-
-        showMessage(`تم استخراج ${articlesToSave.length} مقالة. جاري الحفظ...`, 'info');
-        await saveArticlesToServer(articlesToSave);
-        showMessage('تم استيراد جميع المقالات بنجاح! يمكنك العودة للصفحة الرئيسية لرؤيتها.', 'success');
-
-      } catch (error: any) {
-        showMessage(error.message, 'error');
-      } finally {
-        setIsProcessing(false);
-        if (xmlInputRef.current) xmlInputRef.current.value = '';
+        
+        articlesToSave.push({
+          filename,
+          content: fileContent,
+          metadata: { id: currentId, title, image_url: imageUrl || null, created_at: date, filename }
+        });
       }
-    });
+
+      if (articlesToSave.length === 0) throw new Error('لا توجد مقالات صالحة.');
+
+      showMessage(`تم استخراج ${articlesToSave.length} مقالة. جاري الحفظ...`, 'info');
+      await saveArticlesToServer(articlesToSave);
+      showMessage('تم استيراد جميع المقالات بنجاح! يمكنك العودة للصفحة الرئيسية لرؤيتها.', 'success');
+
+    } catch (error: any) {
+      showMessage(error.message, 'error');
+    } finally {
+      setIsProcessing(false);
+      if (xmlInputRef.current) xmlInputRef.current.value = '';
+    }
   };
 
   const processWordDoc = async (file: File) => {
