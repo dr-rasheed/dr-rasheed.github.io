@@ -5,7 +5,7 @@ import remarkGfm from 'remark-gfm';
 import { format } from 'date-fns';
 import { ar } from 'date-fns/locale';
 import { Play, Square, ArrowRight, Volume2, VolumeX } from 'lucide-react';
-import articlesData from '../data/articles.json';
+import fm from 'front-matter';
 
 interface Article {
   id: number;
@@ -18,16 +18,39 @@ interface Article {
 export default function Article() {
   const { id } = useParams<{ id: string }>();
   const [article, setArticle] = useState<Article | null>(null);
+  const [loading, setLoading] = useState(true);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const synth = window.speechSynthesis;
   const utteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
 
   useEffect(() => {
-    const foundArticle = articlesData.find(a => a.id === Number(id));
-    if (foundArticle) {
-      setArticle(foundArticle);
-    }
+    // First, find the filename from the index
+    fetch('/articles/index.json')
+      .then(res => res.json())
+      .then(index => {
+        const found = index.find((a: any) => a.id === Number(id));
+        if (!found) throw new Error('Article not found');
+        
+        // Then fetch the actual markdown file
+        return fetch(`/articles/${found.filename}`);
+      })
+      .then(res => res.text())
+      .then(text => {
+        const parsed = fm(text);
+        setArticle({
+          id: Number(id),
+          title: (parsed.attributes as any).title,
+          image_url: (parsed.attributes as any).image_url || null,
+          created_at: (parsed.attributes as any).created_at,
+          content: parsed.body
+        });
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error('Error loading article:', err);
+        setLoading(false);
+      });
 
     return () => {
       if (synth.speaking) {
@@ -77,6 +100,14 @@ export default function Article() {
       setIsPaused(false);
     }
   };
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-64">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600"></div>
+      </div>
+    );
+  }
 
   if (!article) {
     return (

@@ -11,7 +11,7 @@ export default function Layout() {
             <span className="font-bold text-xl tracking-tight">مكتبة المقالات</span>
           </Link>
           <nav>
-            <Link to="/admin" className="text-gray-500 hover:text-gray-900 transition-colors" title="لوحة التحكم">
+            <Link to="/admin" className="text-gray-300 hover:text-gray-900 transition-colors opacity-0 hover:opacity-100 focus:opacity-100" title="لوحة التحكم">
               <Settings className="w-5 h-5" />
             </Link>
           </nav>

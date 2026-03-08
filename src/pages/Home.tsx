@@ -1,21 +1,41 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { format } from 'date-fns';
 import { ar } from 'date-fns/locale';
 import { FileText, Calendar, Image as ImageIcon } from 'lucide-react';
-import articlesData from '../data/articles.json';
 
 interface Article {
   id: number;
   title: string;
   image_url: string | null;
   created_at: string;
+  filename: string;
 }
 
 export default function Home() {
-  const [articles] = useState<Article[]>(
-    [...articlesData].sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime())
-  );
+  const [articles, setArticles] = useState<Article[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch('/articles/index.json')
+      .then(res => res.json())
+      .then(data => {
+        setArticles(data);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error('Failed to load articles index:', err);
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-64">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600"></div>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-8">

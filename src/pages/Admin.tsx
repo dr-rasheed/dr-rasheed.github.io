@@ -1,150 +1,209 @@
-import { useState } from 'react';
-import { FileCode2, Copy, CheckCircle2 } from 'lucide-react';
-import articlesData from '../data/articles.json';
+import { useState, useRef } from 'react';
+import { Upload, AlertCircle, CheckCircle2, FileText, FileCode2 } from 'lucide-react';
+import { parseString } from 'xml2js';
+import TurndownService from 'turndown';
+import mammoth from 'mammoth';
 
 export default function Admin() {
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
-  const [imageUrl, setImageUrl] = useState('');
-  const [generatedJson, setGeneratedJson] = useState('');
-  const [copied, setCopied] = useState(false);
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [statusMessage, setStatusMessage] = useState('');
+  const [statusType, setStatusType] = useState<'info' | 'success' | 'error'>('info');
+  const xmlInputRef = useRef<HTMLInputElement>(null);
+  const docxInputRef = useRef<HTMLInputElement>(null);
 
-  const handleGenerate = (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    if (!title || !content) return;
+  const turndownService = new TurndownService({
+    headingStyle: 'atx',
+    codeBlockStyle: 'fenced'
+  });
 
-    // Generate a new ID based on existing articles
-    const newId = articlesData.length > 0 
-      ? Math.max(...articlesData.map(a => a.id)) + 1 
-      : 1;
-
-    const newArticle = {
-      id: newId,
-      title: title,
-      content: content,
-      image_url: imageUrl || null,
-      created_at: new Date().toISOString()
-    };
-
-    // Create the new array with the new article at the beginning
-    const newArticlesArray = [newArticle, ...articlesData];
-    
-    setGeneratedJson(JSON.stringify(newArticlesArray, null, 2));
-    setCopied(false);
+  const showMessage = (msg: string, type: 'info' | 'success' | 'error') => {
+    setStatusMessage(msg);
+    setStatusType(type);
   };
 
-  const copyToClipboard = () => {
-    navigator.clipboard.writeText(generatedJson);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 3000);
+  const saveArticlesToServer = async (articlesToSave: any[]) => {
+    const response = await fetch('/api/save-articles', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(articlesToSave)
+    });
+    if (!response.ok) throw new Error('فشل في حفظ المقالات.');
+  };
+
+  const processBloggerXml = (xmlText: string) => {
+    setIsProcessing(true);
+    showMessage('جاري تحليل ملف بلوجر...', 'info');
+
+    parseString(xmlText, async (err, result) => {
+      if (err) {
+        showMessage('فشل في قراءة ملف XML.', 'error');
+        setIsProcessing(false);
+        return;
+      }
+
+      try {
+        const feed = result.feed;
+        if (!feed || !feed.entry) throw new Error('لم يتم العثور على مقالات.');
+
+        const entries = feed.entry;
+        const articlesToSave = [];
+        let currentId = Date.now();
+
+        for (const entry of entries) {
+          const categories = entry.category || [];
+          const isPost = categories.some((c: any) => c.$ && c.$.term === 'http://schemas.google.com/blogger/2008/kind#post');
+          if (!isPost) continue;
+
+          const title = entry.title?.[0]?._ || entry.title?.[0] || 'بدون عنوان';
+          const htmlContent = entry.content?.[0]?._ || entry.content?.[0] || '';
+          if (!htmlContent) continue;
+
+          const markdownContent = turndownService.turndown(htmlContent);
+          const imgMatch = htmlContent.match(/<img[^>]+src="([^">]+)"/);
+          const imageUrl = imgMatch ? imgMatch[1] : null;
+          const date = entry.published?.[0] || new Date().toISOString();
+
+          currentId++;
+          const safeTitle = title.replace(/[^a-zA-Z0-9\u0600-\u06FF]/g, '-').substring(0, 50);
+          const filename = `${currentId}-${safeTitle}.md`;
+          
+          const fileContent = `---
+id: ${currentId}
+title: "${title.replace(/"/g, '\\"')}"
+image_url: "${imageUrl || ''}"
+created_at: "${date}"
+---
+
+${markdownContent}`;
+          
+          articlesToSave.push({
+            filename,
+            content: fileContent,
+            metadata: { id: currentId, title, image_url: imageUrl || null, created_at: date, filename }
+          });
+        }
+
+        if (articlesToSave.length === 0) throw new Error('لا توجد مقالات صالحة.');
+
+        showMessage(`تم استخراج ${articlesToSave.length} مقالة. جاري الحفظ...`, 'info');
+        await saveArticlesToServer(articlesToSave);
+        showMessage('تم استيراد جميع المقالات بنجاح! يمكنك العودة للصفحة الرئيسية لرؤيتها.', 'success');
+
+      } catch (error: any) {
+        showMessage(error.message, 'error');
+      } finally {
+        setIsProcessing(false);
+        if (xmlInputRef.current) xmlInputRef.current.value = '';
+      }
+    });
+  };
+
+  const processWordDoc = async (file: File) => {
+    setIsProcessing(true);
+    showMessage('جاري تحويل ملف الوورد...', 'info');
+
+    try {
+      const arrayBuffer = await file.arrayBuffer();
+      const result = await mammoth.convertToHtml({ arrayBuffer });
+      const markdownContent = turndownService.turndown(result.value);
+      
+      const title = file.name.replace(/\.[^/.]+$/, "");
+      const currentId = Date.now();
+      const safeTitle = title.replace(/[^a-zA-Z0-9\u0600-\u06FF]/g, '-').substring(0, 50);
+      const filename = `${currentId}-${safeTitle}.md`;
+      const date = new Date().toISOString();
+
+      const fileContent = `---
+id: ${currentId}
+title: "${title.replace(/"/g, '\\"')}"
+image_url: ""
+created_at: "${date}"
+---
+
+${markdownContent}`;
+
+      await saveArticlesToServer([{
+        filename,
+        content: fileContent,
+        metadata: { id: currentId, title, image_url: null, created_at: date, filename }
+      }]);
+
+      showMessage('تم تحويل وحفظ المقالة بنجاح! يمكنك العودة للصفحة الرئيسية لرؤيتها.', 'success');
+    } catch (error: any) {
+      showMessage(`خطأ في تحويل الملف: ${error.message}`, 'error');
+    } finally {
+      setIsProcessing(false);
+      if (docxInputRef.current) docxInputRef.current.value = '';
+    }
   };
 
   return (
-    <div className="space-y-8">
-      <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
-        <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-          <FileCode2 className="w-6 h-6 text-indigo-600" />
-          أداة إنشاء المقالات لـ GitHub
-        </h2>
-        
-        <div className="bg-blue-50 text-blue-800 p-4 rounded-lg mb-8 text-sm leading-relaxed border border-blue-100">
-          <p className="font-bold mb-2">كيفية إضافة مقالة من بلوجر إلى موقعك على GitHub:</p>
-          <ol className="list-decimal list-inside space-y-1">
-            <li>انسخ عنوان المقالة ومحتواها من بلوجر والصقها هنا.</li>
-            <li>للآيات القرآنية، ضع علامة <code>&gt;</code> قبل الآية ليتم تطبيق خط المصحف عليها.</li>
-            <li>اضغط على "توليد الكود".</li>
-            <li>انسخ الكود الناتج، واذهب إلى مستودعك في GitHub.</li>
-            <li>افتح الملف <code>src/data/articles.json</code> واضغط على زر التعديل (القلم).</li>
-            <li>احذف المحتوى القديم والصق الكود الجديد، ثم احفظ التعديلات (Commit changes).</li>
-          </ol>
-        </div>
-
-        <form onSubmit={handleGenerate} className="space-y-6">
-          <div>
-            <label htmlFor="title" className="block text-sm font-medium text-gray-700 mb-2">
-              عنوان المقالة
-            </label>
-            <input
-              type="text"
-              id="title"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
-              required
-              placeholder="أدخل عنوان المقالة هنا..."
-            />
-          </div>
-
-          <div>
-            <label htmlFor="imageUrl" className="block text-sm font-medium text-gray-700 mb-2">
-              رابط الصورة (اختياري)
-            </label>
-            <input
-              type="url"
-              id="imageUrl"
-              value={imageUrl}
-              onChange={(e) => setImageUrl(e.target.value)}
-              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors text-left"
-              placeholder="https://example.com/image.jpg"
-              dir="ltr"
-            />
-          </div>
-
-          <div>
-            <label htmlFor="content" className="block text-sm font-medium text-gray-700 mb-2">
-              محتوى المقالة
-            </label>
-            <textarea
-              id="content"
-              value={content}
-              onChange={(e) => setContent(e.target.value)}
-              rows={10}
-              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors font-mono text-sm"
-              required
-              placeholder="اكتب أو الصق محتوى المقالة هنا..."
-            />
-          </div>
-
-          <div className="flex justify-end">
-            <button
-              type="submit"
-              className="bg-indigo-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors"
-            >
-              توليد الكود
-            </button>
-          </div>
-        </form>
+    <div className="max-w-4xl mx-auto space-y-8 mt-10">
+      <div className="text-center mb-12">
+        <h2 className="text-3xl font-bold text-gray-900 mb-4">إضافة المقالات بسهولة</h2>
+        <p className="text-gray-600">ارفع ملفاتك هنا وسيتم تحويلها وحفظها في الموقع فوراً.</p>
       </div>
 
-      {generatedJson && (
-        <div className="bg-gray-900 rounded-2xl shadow-sm border border-gray-800 p-8 text-left" dir="ltr">
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="text-lg font-bold text-white">الكود المولد (articles.json)</h3>
-            <button
-              onClick={copyToClipboard}
-              className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-colors ${
-                copied ? 'bg-green-600 text-white' : 'bg-white text-gray-900 hover:bg-gray-100'
-              }`}
-            >
-              {copied ? (
-                <>
-                  <CheckCircle2 className="w-4 h-4" />
-                  تم النسخ!
-                </>
-              ) : (
-                <>
-                  <Copy className="w-4 h-4" />
-                  نسخ الكود
-                </>
-              )}
-            </button>
-          </div>
-          <pre className="bg-black p-4 rounded-lg overflow-x-auto text-green-400 text-sm font-mono leading-relaxed">
-            <code>{generatedJson}</code>
-          </pre>
+      {statusMessage && (
+        <div className={`p-4 rounded-xl flex items-center justify-center gap-3 mb-8 ${
+          statusType === 'error' ? 'bg-red-50 text-red-700' :
+          statusType === 'success' ? 'bg-green-50 text-green-700' :
+          'bg-blue-50 text-blue-700'
+        }`}>
+          {statusType === 'error' ? <AlertCircle className="w-5 h-5" /> : <CheckCircle2 className="w-5 h-5" />}
+          <p className="font-medium">{statusMessage}</p>
         </div>
       )}
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {/* Word Document Upload */}
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 text-center hover:shadow-md transition-shadow">
+          <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+            <FileText className="w-8 h-8 text-blue-600" />
+          </div>
+          <h3 className="text-xl font-bold text-gray-900 mb-2">رفع مقالة (Word)</h3>
+          <p className="text-sm text-gray-500 mb-6">ارفع ملف .docx ليتم تحويله ونشره فوراً</p>
+          
+          <label className={`flex flex-col items-center justify-center w-full h-32 border-2 border-dashed rounded-xl cursor-pointer transition-colors ${isProcessing ? 'bg-gray-50 border-gray-300' : 'bg-blue-50 border-blue-300 hover:bg-blue-100'}`}>
+            <span className="text-blue-600 font-medium">اختر ملف Word</span>
+            <input 
+              ref={docxInputRef}
+              type="file" 
+              className="hidden" 
+              accept=".docx" 
+              onChange={(e) => e.target.files?.[0] && processWordDoc(e.target.files[0])}
+              disabled={isProcessing}
+            />
+          </label>
+        </div>
+
+        {/* Blogger XML Upload */}
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 text-center hover:shadow-md transition-shadow">
+          <div className="bg-orange-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+            <FileCode2 className="w-8 h-8 text-orange-600" />
+          </div>
+          <h3 className="text-xl font-bold text-gray-900 mb-2">استيراد من بلوجر</h3>
+          <p className="text-sm text-gray-500 mb-6">ارفع ملف XML لاستيراد جميع مقالاتك دفعة واحدة</p>
+          
+          <label className={`flex flex-col items-center justify-center w-full h-32 border-2 border-dashed rounded-xl cursor-pointer transition-colors ${isProcessing ? 'bg-gray-50 border-gray-300' : 'bg-orange-50 border-orange-300 hover:bg-orange-100'}`}>
+            <span className="text-orange-600 font-medium">اختر ملف XML</span>
+            <input 
+              ref={xmlInputRef}
+              type="file" 
+              className="hidden" 
+              accept=".xml" 
+              onChange={(e) => {
+                const file = e.target.files?.[0];
+                if (!file) return;
+                const reader = new FileReader();
+                reader.onload = (event) => processBloggerXml(event.target?.result as string);
+                reader.readAsText(file);
+              }}
+              disabled={isProcessing}
+            />
+          </label>
+        </div>
+      </div>
     </div>
   );
 }
