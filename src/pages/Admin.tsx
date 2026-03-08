@@ -21,12 +21,19 @@ export default function Admin() {
   };
 
   const saveArticlesToServer = async (articlesToSave: any[]) => {
-    const response = await fetch('/api/save-articles', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(articlesToSave)
-    });
-    if (!response.ok) throw new Error('فشل في حفظ المقالات.');
+    const batchSize = 10;
+    for (let i = 0; i < articlesToSave.length; i += batchSize) {
+      const batch = articlesToSave.slice(i, i + batchSize);
+      const response = await fetch('/api/save-articles', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(batch)
+      });
+      if (!response.ok) throw new Error('فشل في حفظ المقالات.');
+      
+      // Update progress message
+      showMessage(`جاري الحفظ... (${Math.min(i + batchSize, articlesToSave.length)}/${articlesToSave.length})`, 'info');
+    }
   };
 
   const processBloggerXml = async (xmlText: string) => {
@@ -219,12 +226,12 @@ ${markdownContent}`;
           <p className="text-sm text-gray-500 mb-6">ارفع ملف XML لاستيراد جميع مقالاتك دفعة واحدة</p>
           
           <label className={`flex flex-col items-center justify-center w-full h-32 border-2 border-dashed rounded-xl cursor-pointer transition-colors ${isProcessing ? 'bg-gray-50 border-gray-300' : 'bg-orange-50 border-orange-300 hover:bg-orange-100'}`}>
-            <span className="text-orange-600 font-medium">اختر ملف XML</span>
+            <span className="text-orange-600 font-medium">اختر ملف XML أو ATOM</span>
             <input 
               ref={xmlInputRef}
               type="file" 
               className="hidden" 
-              accept=".xml" 
+              accept=".xml,.atom" 
               onChange={(e) => {
                 const file = e.target.files?.[0];
                 if (!file) return;
