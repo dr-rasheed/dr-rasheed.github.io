@@ -1,0 +1,6 @@
+{
+  "name": "Academic Dashboard",
+  "description": "A fully functional, database-less, highly interactive academic website that works 100% offline.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

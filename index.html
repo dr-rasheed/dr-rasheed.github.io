@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أ.د. رشيد الجراح | الموسوعة الأكاديمية</title>
+    
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0c4128">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Readex+Pro:wght@300;400;500;600;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              academic: {
+                bg: 'var(--bg-color)',
+                text: 'var(--text-color)',
+                primary: 'var(--primary-color)',
+                card: 'var(--card-bg)',
+                border: 'var(--border-color)',
+                hover: 'var(--hover-bg)',
+              }
+            },
+            fontFamily: {
+              readex: ['"Readex Pro"', 'sans-serif'],
+              amiri: ['"Amiri Quran"', 'serif'],
+              tajawal: ['"Tajawal"', 'sans-serif'],
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+        :root {
+            --bg-color: #fdfbf7;
+            --text-color: #1a202c;
+            --primary-color: #0c4128;
+            --card-bg: #ffffff;
+            --border-color: #e2e8f0;
+            --hover-bg: #f7fafc;
+        }
+        
+        body { transition: background-color 0.4s ease, color 0.4s ease; font-family: 'Readex Pro', sans-serif; }
+        
+        /* Themes Setup */
+        body.theme-zinc { --bg-color: #18181b; --text-color: #f4f4f5; --primary-color: #10b981; --card-bg: #27272a; --border-color: #3f3f46; --hover-bg: #3f3f46; }
+        body.theme-sepia { --bg-color: #f4ecd8; --text-color: #5b4636; --primary-color: #78350f; --card-bg: #eaddc5; --border-color: #d5c4a1; --hover-bg: #d5c4a1; }
+        body.theme-ocean { --bg-color: #0f172a; --text-color: #e0f2fe; --primary-color: #0ea5e9; --card-bg: #1e293b; --border-color: #334155; --hover-bg: #334155; }
+        body.theme-sage { --bg-color: #134e4a; --text-color: #ccfbf1; --primary-color: #2dd4bf; --card-bg: #0f3c39; --border-color: #115e59; --hover-bg: #115e59; }
+        body.theme-burgundy { --bg-color: #4c0519; --text-color: #ffe4e6; --primary-color: #fb7185; --card-bg: #3f0414; --border-color: #881337; --hover-bg: #881337; }
+        body.theme-nordic { --bg-color: #e2e8f0; --text-color: #1e293b; --primary-color: #3b82f6; --card-bg: #cbd5e1; --border-color: #94a3b8; --hover-bg: #94a3b8; }
+        body.theme-amethyst { --bg-color: #2e1065; --text-color: #f3e8ff; --primary-color: #c084fc; --card-bg: #3b0764; --border-color: #581c87; --hover-bg: #581c87; }
+        body.theme-sunset { --bg-color: #fff7ed; --text-color: #431407; --primary-color: #f97316; --card-bg: #ffedd5; --border-color: #fdba74; --hover-bg: #fdba74; }
+        body.theme-forest { --bg-color: #052e16; --text-color: #dcfce7; --primary-color: #4ade80; --card-bg: #064e3b; --border-color: #065f46; --hover-bg: #065f46; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-color); }
+        ::-webkit-scrollbar-thumb { background: var(--primary-color); border-radius: 4px; }
+
+        /* Details summary markers */
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+    </style>
+</head>
+<body class="bg-academic-bg text-academic-text antialiased min-h-screen">
+    
+    <!-- Top Header -->
+    <header class="sticky top-0 z-50 bg-academic-bg/90 backdrop-blur-md border-b border-academic-border shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <!-- Logo -->
+            <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-full bg-academic-primary text-white flex items-center justify-center text-2xl font-amiri font-bold shadow-lg">
+                    ر
+                </div>
+                <div>
+                    <h1 class="text-2xl font-bold text-academic-primary tracking-tight">أ.د. رشيد الجراح</h1>
+                    <p class="text-sm opacity-80 font-medium">الموسوعة الأكاديمية والمكتبة الرقمية</p>
+                </div>
+            </div>
+            
+            <!-- Action Buttons -->
+            <div class="flex items-center gap-2">
+                <button title="سجل الإنجاز" class="p-2.5 rounded-full bg-academic-card border border-academic-border hover:bg-academic-hover transition-colors shadow-sm text-academic-text">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>
+                </button>
+                <button title="المزامنة" class="p-2.5 rounded-full bg-academic-card border border-academic-border hover:bg-academic-hover transition-colors shadow-sm text-academic-text">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+                </button>
+                <button title="مفكرتي" class="p-2.5 rounded-full bg-academic-card border border-academic-border hover:bg-academic-hover transition-colors shadow-sm text-academic-text relative">
+                    <span class="absolute top-0 right-0 w-2.5 h-2.5 bg-red-500 rounded-full border-2 border-academic-bg"></span>
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                </button>
+                <!-- Theme Switcher Dropdown -->
+                <div class="relative group">
+                    <button title="المظهر" class="p-2.5 rounded-full bg-academic-card border border-academic-border hover:bg-academic-hover transition-colors shadow-sm text-academic-text">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path></svg>
+                    </button>
+                    <div class="absolute left-0 mt-2 w-48 bg-academic-card border border-academic-border rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 py-2">
+                        <h4 class="text-xs font-bold px-4 py-2 opacity-50">اختر المظهر</h4>
+                        <div id="theme-options" class="flex flex-col text-sm">
+                            <!-- Populated via JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Omnibar Search -->
+    <section class="max-w-4xl mx-auto px-6 mt-12 mb-16 relative z-40">
+        <div class="relative">
+            <input type="text" id="omnibar" placeholder="ابحث في الموسوعة (مقالات، كتب، تصنيفات)..." 
+                class="w-full text-lg p-5 pr-14 rounded-2xl border border-academic-border shadow-lg bg-academic-card text-academic-text focus:ring-4 focus:ring-academic-primary/20 focus:border-academic-primary focus:outline-none transition-all">
+            <svg class="absolute right-5 top-5 h-7 w-7 text-academic-primary opacity-70" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+            
+            <div id="search-results" class="absolute w-full mt-3 bg-academic-card border border-academic-border shadow-2xl rounded-2xl hidden z-50 max-h-96 overflow-y-auto divide-y divide-academic-border">
+                <!-- Populated via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Area -->
+    <main class="max-w-7xl mx-auto px-6 lg:px-8 mb-24 grid grid-cols-1 lg:grid-cols-4 gap-10">
+        
+        <!-- Sidebar: Tree Category Widget -->
+        <aside class="col-span-1">
+            <div class="bg-academic-card border border-academic-border rounded-2xl p-6 shadow-sm sticky top-28">
+                <h2 class="text-xl font-bold mb-6 flex items-center gap-2 border-b border-academic-border pb-4 text-academic-primary">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                    تصنيفات الموسوعة
+                </h2>
+                <div id="tree-container" class="space-y-2">
+                    <!-- Populated via JS -->
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Feed -->
+        <div class="col-span-1 lg:col-span-3 space-y-16">
+            
+            <!-- Recent Articles -->
+            <section>
+                <div class="flex justify-between items-end mb-8 border-b border-academic-border pb-4">
+                    <h2 class="text-3xl font-bold text-academic-primary">أحدث المنشورات</h2>
+                    <a href="#" class="text-sm font-medium hover:underline opacity-80">عرض الكل &larr;</a>
+                </div>
+                <div id="articles-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Populated via JS -->
+                </div>
+            </section>
+
+            <!-- Books Archive -->
+            <section>
+                <div class="flex justify-between items-end mb-8 border-b border-academic-border pb-4">
+                    <h2 class="text-3xl font-bold text-academic-primary">مكتبة الكتب الرقمية</h2>
+                    <a href="#" class="text-sm font-medium hover:underline opacity-80">تصفح الـ 27 كتاب &larr;</a>
+                </div>
+                <div id="books-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+                    <!-- Populated via JS -->
+                </div>
+            </section>
+            
+        </div>
+    </main>
+
+    <!-- Import Database -->
+    <script src="/js/my_data.js"></script>
+    
+    <script>
+        /* ---------------------------------
+           1. Themes Engine
+           --------------------------------- */
+        const themes = [
+            { id: '', name: 'الافتراضي المريح' },
+            { id: 'zinc', name: 'الداكن المتقدم' },
+            { id: 'sepia', name: 'الورق القديم (سيبيا)' },
+            { id: 'ocean', name: 'أعماق المحيط' },
+            { id: 'sage', name: 'أخضر مريمية' },
+            { id: 'burgundy', name: 'عنابي ملكي' },
+            { id: 'nordic', name: 'صقيع شمالي' },
+            { id: 'amethyst', name: 'ليلة بنفسجية' },
+            { id: 'sunset', name: 'غروب دافئ' },
+            { id: 'forest', name: 'غابة استوائية' }
+        ];
+
+        const themeOptionsContainer = document.getElementById('theme-options');
+        const currentTheme = localStorage.getItem('academic_theme') || '';
+        
+        if (currentTheme) {
+            document.body.classList.add(`theme-${currentTheme}`);
+        }
+
+        themes.forEach(theme => {
+            const btn = document.createElement('button');
+            btn.className = 'w-full text-right px-4 py-2 hover:bg-academic-hover transition-colors flex items-center justify-between';
+            btn.innerHTML = `
+                <span>${theme.name}</span>
+                ${currentTheme === theme.id ? '<svg class="w-4 h-4 text-academic-primary" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>' : ''}
+            `;
+            btn.addEventListener('click', () => {
+                document.body.className = 'bg-academic-bg text-academic-text antialiased min-h-screen ' + (theme.id ? `theme-${theme.id}` : '');
+                localStorage.setItem('academic_theme', theme.id);
+                // Reload page or re-render menu to update checkmark (simplified for now)
+                location.reload(); 
+            });
+            themeOptionsContainer.appendChild(btn);
+        });
+
+        /* ---------------------------------
+           2. Omnibar Search Engine
+           --------------------------------- */
+        const omnibar = document.getElementById('omnibar');
+        const resultsBox = document.getElementById('search-results');
+        
+        omnibar.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            resultsBox.innerHTML = '';
+            
+            if (!query) {
+                resultsBox.classList.add('hidden');
+                return;
+            }
+            
+            const matches = window.articlesDatabase.filter(a => 
+                a.title.toLowerCase().includes(query) || 
+                a.category.toLowerCase().includes(query)
+            );
+            
+            if (matches.length > 0) {
+                matches.forEach(m => {
+                    const el = document.createElement('a');
+                    el.href = m.link;
+                    el.className = 'block p-4 hover:bg-academic-hover transition-colors cursor-pointer border-b border-academic-border last:border-0';
+                    el.innerHTML = `
+                        <div class="font-semibold text-lg text-academic-primary">${m.title}</div>
+                        <div class="text-sm opacity-70 mt-1 flex items-center gap-2">
+                            <span class="bg-academic-bg px-2 py-0.5 rounded text-xs border border-academic-border">${m.category}</span>
+                            <span>${m.date}</span>
+                        </div>
+                    `;
+                    resultsBox.appendChild(el);
+                });
+                resultsBox.classList.remove('hidden');
+            } else {
+                resultsBox.innerHTML = '<div class="p-6 opacity-70 text-center italic">لم يتم العثور على نتائج تطابق بحثك.</div>';
+                resultsBox.classList.remove('hidden');
+            }
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!omnibar.contains(e.target) && !resultsBox.contains(e.target)) {
+                resultsBox.classList.add('hidden');
+            }
+        });
+
+        /* ---------------------------------
+           3. Tree Category Widget
+           --------------------------------- */
+        const treeContainer = document.getElementById('tree-container');
+        
+        window.categoriesDatabase.forEach(mainCat => {
+            const details = document.createElement('details');
+            details.className = 'group border-b border-academic-border last:border-0 pb-2 mb-2 last:pb-0 last:mb-0';
+            
+            details.innerHTML = `
+                <summary class="flex justify-between items-center cursor-pointer font-semibold py-2 hover:text-academic-primary transition-colors">
+                    <span>${mainCat.name}</span>
+                    <svg class="w-4 h-4 transform group-open:rotate-180 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </summary>
+                <ul class="pl-0 pr-4 mt-2 space-y-2 text-sm opacity-80 border-r-2 border-academic-border mb-2">
+                    ${mainCat.sub.map(subCat => `
+                        <li class="flex justify-between items-center hover:text-academic-primary cursor-pointer hover:translate-x-1 transition-transform">
+                            <span>${subCat.name}</span>
+                            <span class="bg-academic-bg border border-academic-border text-xs px-2 py-0.5 rounded-full">${subCat.count}</span>
+                        </li>
+                    `).join('')}
+                </ul>
+            `;
+            treeContainer.appendChild(details);
+        });
+
+        /* ---------------------------------
+           4. Articles Grid & LMS Progress
+           --------------------------------- */
+        const articlesGrid = document.getElementById('articles-grid');
+        
+        window.articlesDatabase.forEach(article => {
+            const progress = localStorage.getItem(`progress_${article.link}`) || 0;
+            const progressNum = parseInt(progress);
+            const isCompleted = progressNum > 90;
+            
+            const card = document.createElement('a');
+            card.href = article.link;
+            card.className = 'group bg-academic-card border border-academic-border rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all block';
+            
+            card.innerHTML = `
+                <div class="h-48 overflow-hidden relative">
+                    <img src="${article.image}" alt="${article.title}" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute top-4 right-4 bg-academic-bg/90 backdrop-blur text-academic-text px-3 py-1 rounded-full text-xs font-bold shadow-sm">
+                        ${article.category}
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 group-hover:text-academic-primary transition-colors line-clamp-2">${article.title}</h3>
+                    <div class="text-sm opacity-60 mb-4 flex items-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        ${article.date}
+                    </div>
+                    
+                    <!-- LMS Progress Bar -->
+                    <div class="mt-4 pt-4 border-t border-academic-border">
+                        <div class="flex justify-between text-xs font-medium mb-1 ${isCompleted ? 'text-academic-primary' : 'opacity-70'}">
+                            <span>نسبة القراءة</span>
+                            <span>${progressNum}%</span>
+                        </div>
+                        <div class="w-full bg-academic-border rounded-full h-2 overflow-hidden">
+                            <div class="h-2 rounded-full ${isCompleted ? 'bg-academic-primary' : 'bg-gray-400'} transition-all duration-1000" style="width: ${progressNum}%"></div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            articlesGrid.appendChild(card);
+        });
+
+        /* ---------------------------------
+           5. Books Archive Grid
+           --------------------------------- */
+        const booksGrid = document.getElementById('books-grid');
+        for (let i = 1; i <= 27; i++) {
+            const card = document.createElement('a');
+            card.href = `/books/book_${i}.pdf`;
+            card.target = "_blank";
+            card.className = "group bg-academic-card border border-academic-border flex flex-col items-center p-6 rounded-2xl transition-all hover:-translate-y-1 hover:shadow-xl hover:border-academic-primary/50 text-center relative overflow-hidden";
+            
+            card.innerHTML = `
+                <!-- Golden Highlight on Hover -->
+                <div class="absolute inset-0 bg-gradient-to-b from-yellow-500/0 to-yellow-500/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                
+                <div class="w-16 h-20 bg-academic-bg border border-academic-border rounded shadow-sm mb-4 flex flex-col items-center justify-center relative group-hover:border-yellow-600/30 transition-colors z-10">
+                    <svg class="w-8 h-8 text-yellow-600 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                    <span class="text-[10px] font-bold opacity-70 tracking-widest">PDF</span>
+                </div>
+                <h4 class="font-bold text-sm leading-tight mb-1 relative z-10">المجلد ${i}</h4>
+                <div class="text-xs opacity-60 relative z-10">تحميل مباشر</div>
+            `;
+            booksGrid.appendChild(card);
+        }
+
+        /* ---------------------------------
+           6. Service Worker
+           --------------------------------- */
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js').catch(console.error);
+            });
+        }
+    </script>
+</body>
+</html>
+
