@@ -6,13 +6,7 @@ window.articlesDatabase = [
     category: "قصص الأنبياء", 
     date: "10 نيسان 2023", 
     icon: `<svg xmlns="http://www.w3.org/2005/svg" class="w-full h-full text-academic-primary" viewBox="0 0 100 100" fill="none"><rect width="100" height="100" fill="#fdfbf7"/><path d="M50 20 L80 40 L80 80 L20 80 L20 40 Z" stroke="#0c4128" stroke-width="2" fill="#eaddcf"/><circle cx="50" cy="55" r="10" stroke="#0c4128" stroke-width="2" fill="#fbbf24"/><path d="M50 20 L50 45" stroke="#0c4128" stroke-width="2"/></svg>` 
-  },
-  { id: 1, title: "مقدمة في فلسفة العلوم المعاصرة", link: "/posts/template.html?id=1", category: "الفلسفة", date: "15 أكتوبر 2026", image: "https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&q=80&w=600" },
-  { id: 2, title: "تطور الأدب العربي الحديث والشعر الحر", link: "/posts/template.html?id=2", category: "الأدب", date: "20 سبتمبر 2026", image: "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&q=80&w=600" },
-  { id: 3, title: "الفيزياء الكمية وتطبيقاتها المستقبلية", link: "/posts/template.html?id=3", category: "الفيزياء", date: "11 أغسطس 2026", image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&q=80&w=600" },
-  { id: 4, title: "قراءة في تاريخ الحضارة الإسلامية الممتد", link: "/posts/template.html?id=4", category: "التاريخ", date: "5 يوليو 2026", image: "https://images.unsplash.com/photo-1584285499996-5e0f77bfdf39?auto=format&fit=crop&q=80&w=600" },
-  { id: 5, title: "الذكاء الاصطناعي: الفرص والتحديات الأخلاقية", link: "/posts/template.html?id=5", category: "علوم الحاسوب", date: "30 يونيو 2026", image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=600" }
-];
+  }];
 
 window.categoriesDatabase = [
   { 
