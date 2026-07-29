@@ -6,8 +6,15 @@ window.articlesDatabase = [
     category: "قصص الأنبياء", 
     date: "10 نيسان 2023", 
     icon: `<svg xmlns="http://www.w3.org/2005/svg" class="w-full h-full text-academic-primary" viewBox="0 0 100 100" fill="none"><rect width="100" height="100" fill="#fdfbf7"/><path d="M50 20 L80 40 L80 80 L20 80 L20 40 Z" stroke="#0c4128" stroke-width="2" fill="#eaddcf"/><circle cx="50" cy="55" r="10" stroke="#0c4128" stroke-width="2" fill="#fbbf24"/><path d="M50 20 L50 45" stroke="#0c4128" stroke-width="2"/></svg>` 
-  }];
-
+  },
+  {
+     id: Date.now() + 1,
+     title: "من هو داوود؟ الجزء الثاني",
+     link: "/posts/story_of_david_2.html",
+     category: "قصص الأنبياء",
+     date: "11 نيسان 2023",
+     icon: `<svg xmlns="http://www.w3.org/2005/svg" class="w-full h-full text-academic-primary" viewBox="0 0 100 100" fill="none"><rect width="100" height="100" fill="#fdfbf7"/><path d="M20 50 Q 50 10 80 50 T 20 50" stroke="#0c4128" stroke-width="2" fill="#eaddcf"/><circle cx="50" cy="50" r="12" stroke="#0c4128" stroke-width="2" fill="#fbbf24"/><path d="M50 20 L50 38" stroke="#0c4128" stroke-width="2"/><circle cx="50" cy="80" r="5" fill="#0c4128"/></svg>`
+   }];
 window.categoriesDatabase = [
   { 
     name: "العلوم الإنسانية", 
