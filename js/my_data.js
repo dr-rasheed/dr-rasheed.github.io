@@ -48,7 +48,8 @@ const academicBooks = [
             "tele": "https://t.me/rasheed_books/46",
             "fs": "https://www.4shared.com/office/_YUCGGiGku/____.html",
             "noor": "https://www.noor-book.com/pijkdx9",
-            "doi": "https://doi.org/10.5281/zenodo.18419287"
+            "doi": "https://doi.org/10.5281/zenodo.18419287",
+            "archive": "https://archive.org/download/Qisat_Nabi_Allah_Nuh_AlJarrah/%D9%85%D9%86%20%D9%82%D8%B5%D8%A9%20%D9%86%D8%A8%D9%8A%20%D8%A7%D9%84%D9%84%D9%87%20%D9%86%D9%88%D8%AD.pdf"
         },
         "pdf": "https://github.com/dr-rasheed/dr-rasheed.github.io/releases/download/v1.0/story_prophet_noah.pdf"
     },
@@ -61,7 +62,8 @@ const academicBooks = [
             "tele": "https://t.me/rasheed_books/50",
             "fs": "https://www.4shared.com/office/QIh4yAp-ku/___.html",
             "noor": "https://www.noor-book.com/j1swqyb",
-            "doi": "https://doi.org/10.5281/zenodo.18430673"
+            "doi": "https://doi.org/10.5281/zenodo.18430673",
+            "archive": "https://archive.org/download/qissat-nabi-allah-lut-dr-rasheed-aljarrah/%D9%82%D8%B5%D8%A9%20%D9%86%D8%A8%D9%8A%20%D8%A7%D9%84%D9%84%D9%87%20%D9%84%D9%88%D8%B7.pdf"
         },
         "pdf": "https://github.com/dr-rasheed/dr-rasheed.github.io/releases/download/v1.0/story_prophet_lot.pdf"
     },
@@ -74,7 +76,8 @@ const academicBooks = [
             "tele": "https://t.me/rasheed_books/42",
             "fs": "https://www.4shared.com/office/xhcf_OYNku/__online.html",
             "noor": "https://www.noor-book.com/py8uokr",
-            "doi": "https://doi.org/10.5281/zenodo.18430857"
+            "doi": "https://doi.org/10.5281/zenodo.18430857",
+            "archive": "https://archive.org/download/qissat-yusuf-dr-rasheed-aljarrah/%D9%82%D8%B5%D8%A9%20%D9%8A%D9%88%D8%B3%D9%81.pdf"
         },
         "pdf": "https://github.com/dr-rasheed/dr-rasheed.github.io/releases/download/v1.0/story_prophet_joseph.pdf"
     },
@@ -87,7 +90,8 @@ const academicBooks = [
             "tele": "https://t.me/rasheed_books/48",
             "fs": "https://www.4shared.com/office/QZHY7a-Mge/___.html",
             "noor": "https://www.noor-book.com/jkfdgp0",
-            "doi": "https://doi.org/10.5281/zenodo.18430751"
+            "doi": "https://doi.org/10.5281/zenodo.18430751",
+            "archive": "https://archive.org/download/qissat-nabi-allah-musa-dr-rasheed-aljarrah/%D9%82%D8%B5%D8%A9%20%D9%86%D8%A8%D9%8A%20%D8%A7%D9%84%D9%84%D9%87%20%D9%85%D9%88%D8%B3%D9%89.pdf"
         },
         "pdf": "https://github.com/dr-rasheed/dr-rasheed.github.io/releases/download/v1.0/story_prophet_moses.pdf"
     },
@@ -100,7 +104,8 @@ const academicBooks = [
             "tele": "https://t.me/rasheed_books/54",
             "fs": "https://www.4shared.com/office/LOqqTCvJge/___.html",
             "noor": "https://www.noor-book.com/iutps4c",
-            "doi": "https://doi.org/10.5281/zenodo.18430341"
+            "doi": "https://doi.org/10.5281/zenodo.18430341",
+            "archive": "https://archive.org/download/qissat-nabi-allah-dawud-dr-rasheed-aljarrah/%D9%82%D8%B5%D8%A9%20%D9%86%D8%A8%D9%8A%20%D8%A7%D9%84%D9%84%D9%87%20%D8%AF%D8%A7%D9%88%D9%88%D8%AF.pdf"
         },
         "pdf": "https://github.com/dr-rasheed/dr-rasheed.github.io/releases/download/v1.0/story_prophet_david.pdf"
     },
@@ -113,7 +118,8 @@ const academicBooks = [
             "tele": "https://t.me/rasheed_books/56",
             "fs": "https://www.4shared.com/office/UbQtctMiku/___.html",
             "noor": "https://www.noor-book.com/disyp7q",
-            "doi": "https://doi.org/10.5281/zenodo.18430516"
+            "doi": "https://doi.org/10.5281/zenodo.18430516",
+            "archive": "https://archive.org/download/qissat-nabi-allah-sulaiman-dr-rasheed-aljarrah/%D9%82%D8%B5%D8%A9%20%D9%86%D8%A8%D9%8A%20%D8%A7%D9%84%D9%84%D9%87%20%D8%B3%D9%84%D9%8A%D9%85%D8%A7%D9%86.pdf"
         },
         "pdf": "https://github.com/dr-rasheed/dr-rasheed.github.io/releases/download/v1.0/story_prophet_solomon.pdf"
     },
@@ -126,7 +132,8 @@ const academicBooks = [
             "tele": "https://t.me/rasheed_books/44",
             "fs": "https://www.4shared.com/office/IWHA5ayMku/__online.html",
             "noor": "https://www.noor-book.com/3qytxzh",
-            "doi": "https://doi.org/10.5281/zenodo.18430936"
+            "doi": "https://doi.org/10.5281/zenodo.18430936",
+            "archive": "https://archive.org/download/qissat-yunus-dr-rasheed-aljarrah/%D9%82%D8%B5%D8%A9%20%D9%8A%D9%88%D9%86%D8%B3.pdf"
         },
         "pdf": "https://github.com/dr-rasheed/dr-rasheed.github.io/releases/download/v1.0/story_prophet_jonah.pdf"
     },
@@ -139,7 +146,8 @@ const academicBooks = [
             "tele": "https://t.me/rasheed_books/52",
             "fs": "https://www.4shared.com/office/RIcwm5gRku/___online.html",
             "noor": "https://www.noor-book.com/coupwm0",
-            "doi": "https://doi.org/10.5281/zenodo.18424022"
+            "doi": "https://doi.org/10.5281/zenodo.18424022",
+            "archive": "https://archive.org/download/qissat-isa-bin-maryam-dr-rasheed-aljarrah/%D9%82%D8%B5%D8%A9%20%D8%B9%D9%8A%D8%B3%D9%89%20.pdf"
         },
         "pdf": "https://github.com/dr-rasheed/dr-rasheed.github.io/releases/download/v1.0/story_prophet_jesus.pdf"
     },
@@ -152,7 +160,8 @@ const academicBooks = [
             "tele": "https://t.me/rasheed_books/14",
             "fs": "https://www.4shared.com/office/6k78CNapge/_______.html",
             "noor": "https://www.noor-book.com/e4ncyps",
-            "doi": "https://doi.org/10.5281/zenodo.18422949"
+            "doi": "https://doi.org/10.5281/zenodo.18422949",
+            "archive": "https://archive.org/download/qissat-dhul-qarnayn-gog-magog-dr-rasheed-aljarrah/%D9%83%D8%AA%D8%A7%D8%A8_%D9%82%D8%B5%D8%A9_%D8%B0%D9%88_%D8%A7%D9%84%D9%82%D8%B1%D9%86%D9%8A%D9%86_%D9%88_%D9%8A%D8%A3%D8%AC%D9%88%D8%AC_%D9%88_%D9%85%D8%A3%D8%AC%D9%88%D8%AC.pdf"
         },
         "pdf": "https://github.com/dr-rasheed/dr-rasheed.github.io/releases/download/v1.0/story_dhul_qarnayn.pdf"
     },
@@ -165,7 +174,8 @@ const academicBooks = [
             "tele": "https://t.me/rasheed_books/26",
             "fs": "https://www.4shared.com/office/BCoDAOOEfa/___online.html",
             "noor": "https://www.noor-book.com/ydjbw6m",
-            "doi": "https://doi.org/10.5281/zenodo.18422032"
+            "doi": "https://doi.org/10.5281/zenodo.18422032",
+            "archive": "https://archive.org/download/fiqh-as-salah-dr-rasheed-aljarrah/%D9%83%D8%AA%D8%A7%D8%A8%20%D9%81%D9%82%D9%87%20%D8%A7%D9%84%D8%B5%D9%84%D8%A7%D8%A9.pdf"
         },
         "pdf": "https://github.com/dr-rasheed/dr-rasheed.github.io/releases/download/v1.0/fiqh_salah.pdf"
     },
@@ -178,7 +188,8 @@ const academicBooks = [
             "tele": "https://t.me/rasheed_books/22",
             "fs": "https://www.4shared.com/office/wi4WNM9bku/__online.html",
             "noor": "https://www.noor-book.com/vntwj0y",
-            "doi": "https://doi.org/10.5281/zenodo.18423951"
+            "doi": "https://doi.org/10.5281/zenodo.18423951",
+            "archive": "https://archive.org/download/fiqh-az-zakat-dr-rasheed-aljarrah/%D9%81%D9%82%D9%87%20%D8%A7%D9%84%D8%B2%D9%83%D8%A7%D8%A9.pdf"
         },
         "pdf": "https://github.com/dr-rasheed/dr-rasheed.github.io/releases/download/v1.0/fiqh_zakah.pdf"
     },
@@ -191,7 +202,8 @@ const academicBooks = [
             "tele": "https://t.me/rasheed_books/10",
             "fs": "https://www.4shared.com/office/TC4y4Mhgku/___online.html",
             "noor": "https://www.noor-book.com/tkjflz2",
-            "doi": "https://doi.org/10.5281/zenodo.18421787"
+            "doi": "https://doi.org/10.5281/zenodo.18421787",
+            "archive": "https://archive.org/download/fiqh-as-siyam-dr-rasheed-aljarrah/%D9%83%D8%AA%D8%A7%D8%A8%20%D9%81%D9%82%D9%87%20%D8%A7%D9%84%D8%B5%D9%84%D8%A7%D8%A9.pdf"
         },
         "pdf": "https://github.com/dr-rasheed/dr-rasheed.github.io/releases/download/v1.0/fiqh_fasting.pdf"
     },
@@ -204,7 +216,8 @@ const academicBooks = [
             "tele": "https://t.me/rasheed_books/34",
             "fs": "https://www.4shared.com/office/pGB0rFEmfa/___online.html",
             "noor": "https://www.noor-book.com/t8vihan",
-            "doi": "https://doi.org/10.5281/zenodo.18433322"
+            "doi": "https://doi.org/10.5281/zenodo.18433322",
+            "archive": "https://archive.org/download/fiqh-al-hajj-dr-rasheed-aljarrah/%D9%83%D8%AA%D8%A7%D8%A8%20%D9%81%D9%82%D9%87%20%D8%A7%D9%84%D8%AD%D8%AC.pdf"
         },
         "pdf": "https://github.com/dr-rasheed/dr-rasheed.github.io/releases/download/v1.0/fiqh_hajj.pdf"
     },
@@ -217,7 +230,8 @@ const academicBooks = [
             "tele": "https://t.me/rasheed_books/28",
             "fs": "https://www.4shared.com/office/j7CcN_Xrfa/___online.html",
             "noor": "https://www.noor-book.com/vcb9pfw",
-            "doi": "https://doi.org/10.5281/zenodo.18434151"
+            "doi": "https://doi.org/10.5281/zenodo.18434151",
+            "archive": "https://archive.org/download/fiqh-ad-dua-dr-rasheed-aljarrah/%D9%83%D8%AA%D8%A7%D8%A8%20%D9%81%D9%82%D9%87%20%D8%A7%D9%84%D8%AF%D8%B9%D8%A7%D8%A1.pdf"
         },
         "pdf": "https://github.com/dr-rasheed/dr-rasheed.github.io/releases/download/v1.0/fiqh_duaa.pdf"
     },
@@ -230,7 +244,8 @@ const academicBooks = [
             "tele": "https://t.me/rasheed_books/30",
             "fs": "https://www.4shared.com/office/QzW46KVMge/___.html",
             "noor": "https://www.noor-book.com/l1rxvwi",
-            "doi": "https://doi.org/10.5281/zenodo.18419766"
+            "doi": "https://doi.org/10.5281/zenodo.18419766",
+            "archive": "https://archive.org/download/Hal_Li_Ilm_Allah_Hudood/%D9%87%D9%84%20%D9%84%D8%B9%D9%84%D9%85%20%D8%A7%D9%84%D9%84%D9%87%20%D8%AD%D8%AF%D9%88%D8%AF.pdf"
         },
         "pdf": "https://github.com/dr-rasheed/dr-rasheed.github.io/releases/download/v1.0/limits_of_allah_knowledge.pdf"
     },
@@ -243,7 +258,8 @@ const academicBooks = [
             "tele": "https://t.me/rasheed_books/6",
             "fs": "https://www.4shared.com/office/ngzyfFxjge/_____.html",
             "noor": "https://www.noor-book.com/uae5cjy",
-            "doi": "https://doi.org/10.5281/zenodo.18417605"
+            "doi": "https://doi.org/10.5281/zenodo.18417605",
+            "archive": "https://archive.org/download/AlNatharia_Alislamia_Asrar_AlKawn/%D8%A7%D9%84%D9%86%D8%B8%D8%B1%D9%8A%D8%A9%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%D9%8A%D8%A9%20%D8%A7%D9%84%D8%A5%D8%B3%D9%84%D8%A7%D9%85%D9%8A%D8%A9%20%D9%84%D9%83%D8%B4%D9%81%20%D8%A3%D8%B3%D8%B1%D8%A7%D8%B1%20%D8%A7%D9%84%D9%83%D9%88%D9%86.pdf"
         },
         "pdf": "https://github.com/dr-rasheed/dr-rasheed.github.io/releases/download/v1.0/islamic_theory_secrets_universe.pdf"
     },
@@ -256,7 +272,8 @@ const academicBooks = [
             "tele": "https://t.me/rasheed_books/38",
             "fs": "https://www.4shared.com/office/6nLUhc95fa/___online.html",
             "noor": "https://www.noor-book.com/tzkh7oy",
-            "doi": "https://doi.org/10.5281/zenodo.18421680"
+            "doi": "https://doi.org/10.5281/zenodo.18421680",
+            "archive": "https://archive.org/download/AlUlama_Hum_AlDhalimun/%D9%88%D8%A7%D9%84%D8%B9%D9%84%D9%85%D8%A7%D8%A1%20%D9%87%D9%85%20%D8%A7%D9%84%D8%B8%D8%A7%D9%84%D9%85%D9%88%D9%86.pdf"
         },
         "pdf": "https://github.com/dr-rasheed/dr-rasheed.github.io/releases/download/v1.0/scholars_are_unjust.pdf"
     },
@@ -269,7 +286,8 @@ const academicBooks = [
             "tele": "https://t.me/rasheed_books/8",
             "fs": "https://www.4shared.com/office/ZIGwFa3Fge/___online.html",
             "noor": "https://www.noor-book.com/uka7dqe",
-            "doi": "https://doi.org/10.5281/zenodo.18434386"
+            "doi": "https://doi.org/10.5281/zenodo.18434386",
+            "archive": "https://archive.org/download/bidaya-alkhalq-dr-rasheed-aljarrah/%D9%83%D8%AA%D8%A7%D8%A8%20%D8%A8%D8%AF%D8%A7%D9%8A%D8%A9%20%D8%A7%D9%84%D8%AE%D9%84%D9%82.pdf"
         },
         "pdf": "https://github.com/dr-rasheed/dr-rasheed.github.io/releases/download/v1.0/beginning_of_creation.pdf"
     },
@@ -282,7 +300,8 @@ const academicBooks = [
             "tele": "https://t.me/rasheed_books/32",
             "fs": "https://www.4shared.com/office/6CfAd634ge/___online.html",
             "noor": "https://www.noor-book.com/ln0tjko",
-            "doi": "https://doi.org/10.5281/zenodo.18422829"
+            "doi": "https://doi.org/10.5281/zenodo.18422829",
+            "archive": "https://archive.org/download/nathariyat-al-amanah-dr-rasheed-aljarrah/%D9%83%D8%AA%D8%A7%D8%A8%20%D9%86%D8%B8%D8%B1%D9%8A%D8%A9%20%D8%A7%D9%84%D8%A3%D9%85%D8%A7%D9%86%D8%A9.pdf"
         },
         "pdf": "https://github.com/dr-rasheed/dr-rasheed.github.io/releases/download/v1.0/theory_of_trust.pdf"
     },
@@ -295,7 +314,8 @@ const academicBooks = [
             "tele": "https://t.me/rasheed_books/58",
             "fs": "https://www.4shared.com/office/aAyjTUtdge/___online.html",
             "noor": "https://www.noor-book.com/xmgnhf5",
-            "doi": "https://doi.org/10.5281/zenodo.18423161"
+            "doi": "https://doi.org/10.5281/zenodo.18423161",
+            "archive": "https://archive.org/download/nathariyat-altatawwur-dr-rasheed-aljarrah/%D9%86%D8%B8%D8%B1%D9%8A%D8%A9%20%D8%A7%D9%84%D8%AA%D8%B7%D9%88%D8%B1%20.pdf"
         },
         "pdf": "https://github.com/dr-rasheed/dr-rasheed.github.io/releases/download/v1.0/theory_of_evolution.pdf"
     },
@@ -308,7 +328,8 @@ const academicBooks = [
             "tele": "https://t.me/rasheed_books/12",
             "fs": "https://www.4shared.com/office/AeJ0hH-Pjq/___.html",
             "noor": "https://www.noor-book.com/wte0iuy",
-            "doi": "https://doi.org/10.5281/zenodo.18434429"
+            "doi": "https://doi.org/10.5281/zenodo.18434429",
+            "archive": "https://archive.org/download/jadaliyyat-athakar-wal-untha-dr-rasheed-aljarrah/%D9%83%D8%AA%D8%A7%D8%A8%20%D8%AC%D8%AF%D9%84%D9%8A%D8%A9%20%D8%A7%D9%84%D8%B0%D9%83%D8%B1%20%D9%88%D8%A7%D9%84%D8%A3%D9%86%D8%AB%D9%89.pdf"
         },
         "pdf": "https://github.com/dr-rasheed/dr-rasheed.github.io/releases/download/v1.0/dialectic_male_female.pdf"
     },
@@ -321,7 +342,8 @@ const academicBooks = [
             "tele": "https://t.me/rasheed_books/40",
             "fs": "https://www.4shared.com/office/BzM7-rG3ku/__online.html",
             "noor": "https://www.noor-book.com/tcogbz6",
-            "doi": "https://doi.org/10.5281/zenodo.18434272"
+            "doi": "https://doi.org/10.5281/zenodo.18434272",
+            "archive": "https://archive.org/download/kitab-al-jadaliyyat-dr-rasheed-aljarrah/%D9%83%D8%AA%D8%A7%D8%A8%20%D8%A7%D9%84%D8%AC%D8%AF%D9%84%D9%8A%D8%A7%D8%AA.pdf"
         },
         "pdf": "https://github.com/dr-rasheed/dr-rasheed.github.io/releases/download/v1.0/book_of_dialectics.pdf"
     },
@@ -334,7 +356,8 @@ const academicBooks = [
             "tele": "https://t.me/rasheed_books/18",
             "fs": "https://www.4shared.com/office/lMz31oFfge/____.html",
             "noor": "https://www.noor-book.com/mfldo7y",
-            "doi": "https://doi.org/10.5281/zenodo.18431023"
+            "doi": "https://doi.org/10.5281/zenodo.18431023",
+            "archive": "https://archive.org/download/rabbana-baid-bayna-asfarina-dr-rasheed-aljarrah/%D9%83%D8%AA%D8%A7%D8%A8%20%D8%B1%D8%A8%D9%86%D8%A7%20%D8%A8%D8%A7%D8%B9%D8%AF%20%D8%A8%D9%8A%D9%86%20%D8%A3%D8%B3%D9%81%D8%A7%D8%B1%D9%86%D8%A7.pdf"
         },
         "pdf": "https://github.com/dr-rasheed/dr-rasheed.github.io/releases/download/v1.0/lord_distance_our_journeys.pdf"
     },
@@ -347,7 +370,8 @@ const academicBooks = [
             "tele": "https://t.me/rasheed_books/24",
             "fs": "https://www.4shared.com/office/kep2A4UEku/____.html",
             "noor": "https://www.noor-book.com/ibqcnw8",
-            "doi": "https://doi.org/10.5281/zenodo.18423013"
+            "doi": "https://doi.org/10.5281/zenodo.18423013",
+            "archive": "https://archive.org/download/matha-safatfal-alnisa-fil-jannah-dr-rasheed-aljarrah/%D9%85%D8%A7%D8%B0%D8%A7%20%D8%B3%D8%AA%D9%81%D8%B9%D9%84%20%D8%A7%D9%84%D9%86%D8%B3%D8%A7%D8%A1%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%AC%D9%86%D8%A9.pdf"
         },
         "pdf": "https://github.com/dr-rasheed/dr-rasheed.github.io/releases/download/v1.0/women_in_jannah.pdf"
     },
@@ -360,7 +384,8 @@ const academicBooks = [
             "tele": "https://t.me/rasheed_books/16",
             "fs": "https://www.4shared.com/office/2dRIEdQpfa/_____.html",
             "noor": "https://www.noor-book.com/u2lxqoj",
-            "doi": "https://doi.org/10.5281/zenodo.18422280"
+            "doi": "https://doi.org/10.5281/zenodo.18422280",
+            "archive": "https://archive.org/download/lugha-am-lisan-vol1-rasheed-aljarrah/%D9%83%D8%AA%D8%A7%D8%A8%20%D9%84%D8%BA%D8%A9%20%D8%A3%D9%85%20%D9%84%D8%B3%D8%A7%D9%86%20%D8%A7%D9%84%D8%AC%D8%B2%D8%A1%20%D8%A7%D9%84%D8%A3%D9%88%D9%84.pdf"
         },
         "pdf": "https://github.com/dr-rasheed/dr-rasheed.github.io/releases/download/v1.0/language_or_tongue_part1.pdf"
     },
@@ -373,7 +398,8 @@ const academicBooks = [
             "tele": "https://t.me/rasheed_books/20",
             "fs": "https://www.4shared.com/office/YO1hbwt4fa/__online.html",
             "noor": "https://www.noor-book.com/bca4pwk",
-            "doi": "https://doi.org/10.5281/zenodo.18423834"
+            "doi": "https://doi.org/10.5281/zenodo.18423834",
+            "archive": "https://archive.org/download/hadith-al-ifk-dr-rasheed-aljarrah/%D8%AD%D8%AF%D9%8A%D8%AB%20%D8%A7%D9%84%D8%A5%D9%81%D9%83.pdf"
         },
         "pdf": "https://github.com/dr-rasheed/dr-rasheed.github.io/releases/download/v1.0/hadith_al_ifk.pdf"
     },
@@ -386,7 +412,8 @@ const academicBooks = [
             "tele": "https://t.me/rasheed_books/36",
             "fs": "https://www.4shared.com/office/bA_QFe8Ffa/___.html",
             "noor": "https://www.noor-book.com/ixrfl7k",
-            "doi": "https://doi.org/10.5281/zenodo.18423103"
+            "doi": "https://doi.org/10.5281/zenodo.18423103",
+            "archive": "https://archive.org/download/matha-kutiba-fi-azzabur-dr-rasheed-aljarrah/%D9%85%D8%A7%D8%B0%D8%A7%20%D9%83%D8%AA%D8%A8%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%B2%D8%A8%D9%88%D8%B1%D8%9F.pdf"
         },
         "pdf": "https://github.com/dr-rasheed/dr-rasheed.github.io/releases/download/v1.0/what_is_written_in_zabur.pdf"
     }
