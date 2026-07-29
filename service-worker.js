@@ -1,9 +1,10 @@
-const CACHE_NAME = 'academic-encyclopedia-v2';
+const CACHE_NAME = 'academic-encyclopedia-v3';
 
 // Assets to precache immediately on install
 const CORE_ASSETS = [
   '/',
   '/index.html',
+  '/books.html',
   '/manifest.json',
   '/js/my_data.js',
   'https://cdn.tailwindcss.com',
