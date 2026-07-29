@@ -1,289 +1,430 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>موقع أ.د. رشيد الجراح</title>
-    
-    <link rel="manifest" href="/manifest.json">
-    <meta name="theme-color" content="#0c4128">
-    
+
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#0c4128" />
+
     <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Readex+Pro:wght@300;400;500;600;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Readex+Pro:wght@300;400;500;600;700&family=Tajawal:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
     <!-- Tailwind CSS (CDN) -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <script>
       tailwind.config = {
         theme: {
           extend: {
             colors: {
               academic: {
-                bg: 'var(--bg-color)',
-                text: 'var(--text-color)',
-                primary: 'var(--primary-color)',
-                card: 'var(--card-bg)',
-                border: 'var(--border-color)',
-                hover: 'var(--hover-bg)',
-              }
+                bg: "var(--bg-color)",
+                text: "var(--text-color)",
+                primary: "var(--primary-color)",
+                card: "var(--card-bg)",
+                border: "var(--border-color)",
+                hover: "var(--hover-bg)",
+              },
             },
             fontFamily: {
-              readex: ['"Readex Pro"', 'sans-serif'],
-              amiri: ['"Amiri Quran"', 'serif'],
-              tajawal: ['"Tajawal"', 'sans-serif'],
-            }
-          }
-        }
-      }
+              readex: ['"Readex Pro"', "sans-serif"],
+              amiri: ['"Amiri Quran"', "serif"],
+              tajawal: ['"Tajawal"', "sans-serif"],
+            },
+          },
+        },
+      };
     </script>
     <style>
-        :root {
-            --bg-color: #fdfbf7;
-            --text-color: #1a202c;
-            --primary-color: #0c4128;
-            --card-bg: #ffffff;
-            --border-color: #e2e8f0;
-            --hover-bg: #f7fafc;
-        }
-        
-        body { transition: background-color 0.4s ease, color 0.4s ease; font-family: 'Readex Pro', sans-serif; }
-        
-        /* Themes Setup */
-        body.theme-zinc { --bg-color: #18181b; --text-color: #f4f4f5; --primary-color: #10b981; --card-bg: #27272a; --border-color: #3f3f46; --hover-bg: #3f3f46; }
-        body.theme-sepia { --bg-color: #f4ecd8; --text-color: #5b4636; --primary-color: #78350f; --card-bg: #eaddc5; --border-color: #d5c4a1; --hover-bg: #d5c4a1; }
-        body.theme-ocean { --bg-color: #0f172a; --text-color: #e0f2fe; --primary-color: #0ea5e9; --card-bg: #1e293b; --border-color: #334155; --hover-bg: #334155; }
-        body.theme-sage { --bg-color: #134e4a; --text-color: #ccfbf1; --primary-color: #2dd4bf; --card-bg: #0f3c39; --border-color: #115e59; --hover-bg: #115e59; }
-        body.theme-burgundy { --bg-color: #4c0519; --text-color: #ffe4e6; --primary-color: #fb7185; --card-bg: #3f0414; --border-color: #881337; --hover-bg: #881337; }
-        body.theme-nordic { --bg-color: #e2e8f0; --text-color: #1e293b; --primary-color: #3b82f6; --card-bg: #cbd5e1; --border-color: #94a3b8; --hover-bg: #94a3b8; }
-        body.theme-amethyst { --bg-color: #2e1065; --text-color: #f3e8ff; --primary-color: #c084fc; --card-bg: #3b0764; --border-color: #581c87; --hover-bg: #581c87; }
-        body.theme-sunset { --bg-color: #fff7ed; --text-color: #431407; --primary-color: #f97316; --card-bg: #ffedd5; --border-color: #fdba74; --hover-bg: #fdba74; }
-        body.theme-forest { --bg-color: #052e16; --text-color: #dcfce7; --primary-color: #4ade80; --card-bg: #064e3b; --border-color: #065f46; --hover-bg: #065f46; }
+      :root {
+        --bg-color: #fdfbf7;
+        --text-color: #1a202c;
+        --primary-color: #0c4128;
+        --card-bg: #ffffff;
+        --border-color: #e2e8f0;
+        --hover-bg: #f7fafc;
+      }
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--bg-color); }
-        ::-webkit-scrollbar-thumb { background: var(--primary-color); border-radius: 4px; }
-        
-        /* Details summary markers */
-        details > summary { list-style: none; }
-        details > summary::-webkit-details-marker { display: none; }
+      body {
+        transition:
+          background-color 0.4s ease,
+          color 0.4s ease;
+        font-family: "Readex Pro", sans-serif;
+      }
+
+      /* Themes Setup */
+      body.theme-zinc {
+        --bg-color: #18181b;
+        --text-color: #f4f4f5;
+        --primary-color: #10b981;
+        --card-bg: #27272a;
+        --border-color: #3f3f46;
+        --hover-bg: #3f3f46;
+      }
+      body.theme-sepia {
+        --bg-color: #f4ecd8;
+        --text-color: #5b4636;
+        --primary-color: #78350f;
+        --card-bg: #eaddc5;
+        --border-color: #d5c4a1;
+        --hover-bg: #d5c4a1;
+      }
+      body.theme-ocean {
+        --bg-color: #0f172a;
+        --text-color: #e0f2fe;
+        --primary-color: #0ea5e9;
+        --card-bg: #1e293b;
+        --border-color: #334155;
+        --hover-bg: #334155;
+      }
+      body.theme-sage {
+        --bg-color: #134e4a;
+        --text-color: #ccfbf1;
+        --primary-color: #2dd4bf;
+        --card-bg: #0f3c39;
+        --border-color: #115e59;
+        --hover-bg: #115e59;
+      }
+      body.theme-burgundy {
+        --bg-color: #4c0519;
+        --text-color: #ffe4e6;
+        --primary-color: #fb7185;
+        --card-bg: #3f0414;
+        --border-color: #881337;
+        --hover-bg: #881337;
+      }
+      body.theme-nordic {
+        --bg-color: #e2e8f0;
+        --text-color: #1e293b;
+        --primary-color: #3b82f6;
+        --card-bg: #cbd5e1;
+        --border-color: #94a3b8;
+        --hover-bg: #94a3b8;
+      }
+      body.theme-amethyst {
+        --bg-color: #2e1065;
+        --text-color: #f3e8ff;
+        --primary-color: #c084fc;
+        --card-bg: #3b0764;
+        --border-color: #581c87;
+        --hover-bg: #581c87;
+      }
+      body.theme-sunset {
+        --bg-color: #fff7ed;
+        --text-color: #431407;
+        --primary-color: #f97316;
+        --card-bg: #ffedd5;
+        --border-color: #fdba74;
+        --hover-bg: #fdba74;
+      }
+      body.theme-forest {
+        --bg-color: #052e16;
+        --text-color: #dcfce7;
+        --primary-color: #4ade80;
+        --card-bg: #064e3b;
+        --border-color: #065f46;
+        --hover-bg: #065f46;
+      }
+
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: var(--bg-color);
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--primary-color);
+        border-radius: 4px;
+      }
+
+      /* Details summary markers */
+      details > summary {
+        list-style: none;
+      }
+      details > summary::-webkit-details-marker {
+        display: none;
+      }
     </style>
-</head>
-<body class="bg-academic-bg text-academic-text antialiased min-h-screen">
-
+  </head>
+  <body class="bg-academic-bg text-academic-text antialiased min-h-screen">
     <!-- Top Header -->
-    <header class="sticky top-0 z-50 bg-academic-bg/90 backdrop-blur-md border-b border-academic-border shadow-sm">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
-            
-            <!-- Logo -->
-            <a href="/" class="flex items-center gap-3 group" title="العودة للصفحة الرئيسية">
-                <div class="w-12 h-12 rounded-full bg-academic-primary text-white flex items-center justify-center text-2xl font-amiri font-bold shadow-lg group-hover:bg-academic-hover transition-colors">
-                    ر
-                </div>
-                <div>
-                    <h1 class="text-2xl font-bold text-academic-primary tracking-tight group-hover:underline">موقع أ.د. رشيد الجراح</h1>
-                    <p class="text-sm opacity-80 font-medium">المكتبة الرقمية - أرشيف الكتب والمؤلفات</p>
-                </div>
-            </a>
-            
-            <!-- Action Buttons -->
-            <div class="flex items-center gap-2 relative">
-                <button title="سجل الإنجاز" class="p-2.5 rounded-full bg-academic-card border border-academic-border hover:bg-academic-hover transition-colors shadow-sm text-academic-text">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                </button>
-                <button id="theme-btn" title="تغيير المظهر" class="p-2.5 rounded-full bg-academic-card border border-academic-border hover:bg-academic-hover transition-colors shadow-sm text-academic-text">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path></svg>
-                </button>
-                
-                <!-- Theme Dropdown Menu -->
-                <div id="theme-menu" class="absolute top-full left-0 mt-2 w-64 bg-academic-card border border-academic-border rounded-xl shadow-2xl p-2 opacity-0 invisible -translate-y-2 transition-all duration-200 z-50">
-                    <div class="text-xs font-bold opacity-50 px-2 py-1 mb-1 border-b border-academic-border">اختر المظهر المناسب لك</div>
-                    <div id="theme-grid" class="flex flex-col gap-1 max-h-64 overflow-y-auto">
-                        <!-- Populated via JS -->
-                    </div>
-                </div>
+    <header
+      class="sticky top-0 z-50 bg-academic-bg/90 backdrop-blur-md border-b border-academic-border shadow-sm"
+    >
+      <div
+        class="max-w-7xl mx-auto px-6 lg:px-8 py-4 flex flex-col sm:flex-row justify-between items-center gap-4"
+      >
+        <!-- Logo -->
+        <a
+          href="/"
+          class="flex items-center gap-3 group"
+          title="العودة للصفحة الرئيسية"
+        >
+          <div
+            class="w-12 h-12 rounded-full bg-academic-primary text-white flex items-center justify-center text-2xl font-amiri font-bold shadow-lg group-hover:bg-academic-hover transition-colors"
+          >
+            ر
+          </div>
+          <div>
+            <h1
+              class="text-xl font-bold text-academic-primary tracking-tight group-hover:underline"
+            >
+              أ.د. رشيد الجراح
+            </h1>
+            <p class="text-sm opacity-80 font-medium">المكتبة الرقمية</p>
+          </div>
+        </a>
+
+        <!-- Action Buttons -->
+        <div class="flex items-center gap-2 relative">
+          <a
+            href="/books.html"
+            class="flex items-center gap-2 px-4 py-2 rounded-full bg-academic-primary text-white text-sm font-bold hover:bg-academic-hover transition-colors shadow-sm"
+            title="تصفح الكتب والمؤلفات"
+          >
+            <svg
+              class="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477-4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+              ></path>
+            </svg>
+            <span class="hidden sm:inline">المكتبة الرقمية</span>
+          </a>
+          <button
+            title="سجل الإنجاز"
+            class="p-2.5 rounded-full bg-academic-card border border-academic-border hover:bg-academic-hover transition-colors shadow-sm text-academic-text"
+          >
+            <svg
+              class="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+              ></path>
+            </svg>
+          </button>
+          <button
+            id="theme-btn"
+            title="تغيير المظهر"
+            class="p-2.5 rounded-full bg-academic-card border border-academic-border hover:bg-academic-hover transition-colors shadow-sm text-academic-text"
+          >
+            <svg
+              class="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"
+              ></path>
+            </svg>
+          </button>
+
+          <!-- Theme Dropdown Menu -->
+          <div
+            id="theme-menu"
+            class="absolute top-full left-0 mt-2 w-64 bg-academic-card border border-academic-border rounded-xl shadow-2xl p-2 opacity-0 invisible -translate-y-2 transition-all duration-200 z-50"
+          >
+            <div
+              class="text-xs font-bold opacity-50 px-2 py-1 mb-1 border-b border-academic-border"
+            >
+              اختر المظهر المناسب لك
             </div>
-            
-            <!-- Global Search -->
-            <div class="relative w-full sm:w-80">
-                <input type="text" id="search-input" placeholder="ابحث في الموسوعة (مقالات، كتب، تلاوات)..." class="w-full pl-10 pr-4 py-2.5 bg-academic-card border border-academic-border rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-academic-primary transition-all text-academic-text placeholder-academic-text placeholder-opacity-50 shadow-sm">
-                <button id="search-btn" class="absolute left-1 top-1/2 -translate-y-1/2 p-2 bg-academic-primary text-white rounded-full hover:bg-opacity-90 transition-colors shadow-sm">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                </button>
+            <div
+              id="theme-grid"
+              class="flex flex-col gap-1 max-h-64 overflow-y-auto"
+            >
+              <!-- Populated via JS -->
             </div>
+          </div>
         </div>
+
+        <!-- Global Search -->
+        <div class="relative w-full sm:w-80">
+          <input
+            type="text"
+            id="search-input"
+            placeholder="ابحث في الموسوعة (مقالات، كتب، تلاوات)..."
+            class="w-full pl-10 pr-4 py-2.5 bg-academic-card border border-academic-border rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-academic-primary transition-all text-academic-text placeholder-academic-text placeholder-opacity-50 shadow-sm"
+          />
+          <button
+            id="search-btn"
+            class="absolute left-1 top-1/2 -translate-y-1/2 p-2 bg-academic-primary text-white rounded-full hover:bg-opacity-90 transition-colors shadow-sm"
+          >
+            <svg
+              class="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              ></path>
+            </svg>
+          </button>
+        </div>
+      </div>
     </header>
 
     <main class="max-w-7xl mx-auto px-6 lg:px-8 py-12">
-        <div class="flex flex-col gap-16">
-            
-            <!-- Articles Tracker Dashboard -->
-            <section>
-                <div class="flex justify-between items-end mb-8 border-b border-academic-border pb-4">
-                    <div>
-                        <h2 class="text-3xl font-bold text-academic-primary mb-2">أحدث المقالات والدراسات</h2>
-                        <p id="reading-stats" class="text-sm opacity-70">يتم تتبع تقدمك في القراءة محلياً لضمان الخصوصية.</p>
-                    </div>
-                    <a href="#" class="text-sm font-medium hover:underline opacity-80">تصفح الأرشيف كامل &larr;</a>
-                </div>
-                
-                <div id="articles-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <!-- Populated via JS -->
-                </div>
-            </section>
-            
-            <!-- Books Archive -->
-            <section id="books">
-                <div class="flex justify-between items-end mb-6 border-b border-academic-border pb-4">
-                    <h2 class="text-3xl font-bold text-academic-primary">مكتبة الكتب الرقمية</h2>
-                    <a href="/books.html" id="books-counter" class="text-sm font-medium hover:underline opacity-80">تصفح المكتبة كاملة &larr;</a>
-                </div>
+      <div class="flex flex-col gap-16">
+        <!-- Articles Tracker Dashboard -->
+        <section>
+          <div
+            class="flex justify-between items-end mb-8 border-b border-academic-border pb-4"
+          >
+            <div>
+              <h2 class="text-3xl font-bold text-academic-primary mb-2">
+                أحدث المقالات والدراسات
+              </h2>
+              <p id="reading-stats" class="text-sm opacity-70">
+                يتم تتبع تقدمك في القراءة محلياً لضمان الخصوصية.
+              </p>
+            </div>
+          </div>
 
-                <!-- Category Filter -->
-                <div class="flex flex-wrap gap-2 mb-8" id="books-filter">
-                    <button class="px-4 py-2 rounded-full bg-academic-primary text-white text-sm font-bold shadow-sm transition-colors" data-filter="all">الكل</button>
-                    <button class="px-4 py-2 rounded-full bg-academic-card border border-academic-border text-academic-text text-sm font-bold shadow-sm hover:bg-academic-hover transition-colors" data-filter="قصص الأنبياء">قصص الأنبياء</button>
-                    <button class="px-4 py-2 rounded-full bg-academic-card border border-academic-border text-academic-text text-sm font-bold shadow-sm hover:bg-academic-hover transition-colors" data-filter="الفقه والعبادات">الفقه والعبادات</button>
-                    <button class="px-4 py-2 rounded-full bg-academic-card border border-academic-border text-academic-text text-sm font-bold shadow-sm hover:bg-academic-hover transition-colors" data-filter="دراسات فكرية">دراسات فكرية</button>
-                    <button class="px-4 py-2 rounded-full bg-academic-card border border-academic-border text-academic-text text-sm font-bold shadow-sm hover:bg-academic-hover transition-colors" data-filter="دراسات متخصصة">دراسات متخصصة</button>
-                </div>
-                
-                <div id="books-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
-                    <!-- Populated via JS -->
-                </div>
-            </section>
-            
-            <!-- Reciters Section (Optional Feature showcase) -->
-            <section class="opacity-90">
-                <div class="flex justify-between items-end mb-8 border-b border-academic-border pb-4">
-                    <div>
-                        <h2 class="text-2xl font-bold text-academic-primary mb-1">قراء الآيات القرآنية (متوفر داخل المقالات)</h2>
-                    </div>
-                </div>
-                <div id="reciters-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                    <!-- Populated via JS -->
-                </div>
-            </section>
-
-        </div>
+          <div
+            id="articles-grid"
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+          >
+            <!-- Populated via JS -->
+          </div>
+        </section>
+      </div>
     </main>
 
     <!-- Import Database -->
     <script src="/js/my_data.js"></script>
-    
+
     <script>
-        /* ---------------------------------
+      /* ---------------------------------
            1. Themes Engine
            --------------------------------- */
-        const themes = [
-            { id: '', name: 'الافتراضي المريح' },
-            { id: 'zinc', name: 'الداكن المتقدم' },
-            { id: 'sepia', name: 'الورق القديم (سيبيا)' },
-            { id: 'ocean', name: 'أعماق المحيط' },
-            { id: 'sage', name: 'أخضر مريمية' },
-            { id: 'burgundy', name: 'عنابي مخملي' },
-            { id: 'nordic', name: 'شمالي بارد' },
-            { id: 'amethyst', name: 'جمشتي ليلي' },
-            { id: 'sunset', name: 'غروب دافئ' },
-            { id: 'forest', name: 'غابة استوائية' }
-        ];
+      const themes = [
+        { id: "", name: "الافتراضي المريح" },
+        { id: "zinc", name: "الداكن المتقدم" },
+        { id: "sepia", name: "الورق القديم (سيبيا)" },
+        { id: "ocean", name: "أعماق المحيط" },
+        { id: "sage", name: "أخضر مريمية" },
+        { id: "burgundy", name: "عنابي مخملي" },
+        { id: "nordic", name: "شمالي بارد" },
+        { id: "amethyst", name: "جمشتي ليلي" },
+        { id: "sunset", name: "غروب دافئ" },
+        { id: "forest", name: "غابة استوائية" },
+      ];
 
-        const themeGrid = document.getElementById('theme-grid');
-        const themeBtn = document.getElementById('theme-btn');
-        const themeMenu = document.getElementById('theme-menu');
-        let currentTheme = localStorage.getItem('academic_theme') || '';
+      const themeGrid = document.getElementById("theme-grid");
+      const themeBtn = document.getElementById("theme-btn");
+      const themeMenu = document.getElementById("theme-menu");
+      let currentTheme = localStorage.getItem("academic_theme") || "";
 
-        // Apply theme immediately to prevent flash
-        if (currentTheme) document.body.classList.add('theme-' + currentTheme);
+      // Apply theme immediately to prevent flash
+      if (currentTheme) document.body.classList.add("theme-" + currentTheme);
 
-        themes.forEach(theme => {
-            const btn = document.createElement('button');
-            btn.className = `flex items-center justify-between p-3 rounded-xl border transition-all ${currentTheme === theme.id ? 'border-academic-primary bg-academic-primary/5 text-academic-primary font-bold' : 'border-academic-border hover:bg-academic-hover'}`;
-            btn.innerHTML = `
+      themes.forEach((theme) => {
+        const btn = document.createElement("button");
+        btn.className = `flex items-center justify-between p-3 rounded-xl border transition-all ${currentTheme === theme.id ? "border-academic-primary bg-academic-primary/5 text-academic-primary font-bold" : "border-academic-border hover:bg-academic-hover"}`;
+        btn.innerHTML = `
                 <span>${theme.name}</span>
-                ${currentTheme === theme.id ? '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>' : ''}
+                ${currentTheme === theme.id ? '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>' : ""}
             `;
-            btn.onclick = () => {
-                document.body.className = document.body.className.replace(/theme-\w+/g, '');
-                if (theme.id) document.body.classList.add('theme-' + theme.id);
-                localStorage.setItem('academic_theme', theme.id);
-                window.location.reload();
-            };
-            themeGrid.appendChild(btn);
-        });
-
-        themeBtn.onclick = () => {
-            themeMenu.classList.toggle('opacity-0');
-            themeMenu.classList.toggle('invisible');
-            themeMenu.classList.toggle('translate-y-2');
+        btn.onclick = () => {
+          document.body.className = document.body.className.replace(
+            /theme-\w+/g,
+            "",
+          );
+          if (theme.id) document.body.classList.add("theme-" + theme.id);
+          localStorage.setItem("academic_theme", theme.id);
+          window.location.reload();
         };
+        themeGrid.appendChild(btn);
+      });
 
-        /* ---------------------------------
+      themeBtn.onclick = () => {
+        themeMenu.classList.toggle("opacity-0");
+        themeMenu.classList.toggle("invisible");
+        themeMenu.classList.toggle("translate-y-2");
+      };
+
+      /* ---------------------------------
            2. Search Engine
            --------------------------------- */
-        const searchInput = document.getElementById('search-input');
-        const searchBtn = document.getElementById('search-btn');
+      const searchInput = document.getElementById("search-input");
+      const searchBtn = document.getElementById("search-btn");
 
-        searchBtn.onclick = () => {
-            const query = searchInput.value.trim();
-            if (query) {
-                alert('سيتم توجيهك إلى صفحة البحث الشامل قريباً: ' + query);
-            }
-        };
-
-        /* ---------------------------------
-           3. Reciters Engine
-           --------------------------------- */
-        const recitersGrid = document.getElementById('reciters-grid');
-        
-        if (window.recitersDatabase) {
-            recitersDatabase.forEach((r, index) => {
-                const card = document.createElement('div');
-                card.className = "flex items-center gap-4 p-4 border border-academic-border rounded-xl hover:border-academic-primary transition-colors cursor-pointer bg-academic-bg";
-                card.innerHTML = `
-                    <div class="w-12 h-12 bg-academic-card border-2 border-academic-primary rounded-full flex items-center justify-center font-bold text-academic-primary text-xl shadow-inner">
-                        ${index + 1}
-                    </div>
-                    <div>
-                        <div class="font-bold text-sm">${r.name}</div>
-                        <div class="text-xs opacity-60">ID: ${r.id} | جودة عالية</div>
-                    </div>
-                `;
-                recitersGrid.appendChild(card);
-            });
+      searchBtn.onclick = () => {
+        const query = searchInput.value.trim();
+        if (query) {
+          alert("سيتم توجيهك إلى صفحة البحث الشامل قريباً: " + query);
         }
+      };
 
-        /* ---------------------------------
+      /* ---------------------------------
            4. Articles & History Tracker
            --------------------------------- */
-        const history = JSON.parse(localStorage.getItem('academic_reading_history') || '[]');
-        const statsEl = document.getElementById('reading-stats');
-        statsEl.innerHTML = `<span class="text-academic-primary font-bold">${history.length}</span> مقالات مقروءة`;
+      const history = JSON.parse(
+        localStorage.getItem("academic_reading_history") || "[]",
+      );
+      const statsEl = document.getElementById("reading-stats");
+      statsEl.innerHTML = `<span class="text-academic-primary font-bold">${history.length}</span> مقالات مقروءة`;
 
-        const articlesGrid = document.getElementById('articles-grid');
-        const sampleArticles = [
-            { id: 1, title: 'مقدمة في فلسفة العلوم المعاصرة', path: '/posts/template.html', category: 'فلسفة' }
-        ];
+      const articlesGrid = document.getElementById("articles-grid");
+      const myArticles = window.articlesDatabase || [];
 
-        sampleArticles.forEach(article => {
-            const isCompleted = history.some(h => h.path.includes(article.path));
-            const progress = localStorage.getItem(`progress_${article.path}`) || (isCompleted ? '100' : '0');
-            const progressNum = parseInt(progress);
-            
-            const card = document.createElement('a');
-            card.href = article.path;
-            card.className = "group block bg-academic-card border border-academic-border rounded-2xl overflow-hidden transition-all hover:shadow-lg hover:-translate-y-1 hover:border-academic-primary";
-            
-            card.innerHTML = `
+      myArticles.forEach((article) => {
+        const path = article.link || article.path;
+        const isCompleted = history.some((h) => h.path && h.path.includes(path));
+        const progress =
+          localStorage.getItem(`progress_${path}`) ||
+          (isCompleted ? "100" : "0");
+        const progressNum = parseInt(progress);
+
+        const card = document.createElement("a");
+        card.href = path;
+        card.className =
+          "group block bg-academic-card border border-academic-border rounded-2xl overflow-hidden transition-all hover:shadow-lg hover:-translate-y-1 hover:border-academic-primary";
+
+        let mediaHTML = "";
+        if (article.icon) {
+            mediaHTML = `<div class="w-full h-40 bg-academic-bg border-b border-academic-border overflow-hidden">${article.icon}</div>`;
+        } else if (article.image) {
+            mediaHTML = `<div class="w-full h-40 border-b border-academic-border overflow-hidden"><img src="${article.image}" alt="${article.title}" class="w-full h-full object-cover"/></div>`;
+        }
+
+        card.innerHTML = `
+                ${mediaHTML}
                 <div class="p-6">
                     <div class="flex justify-between items-start mb-4">
                         <span class="text-xs font-bold px-3 py-1 bg-academic-bg border border-academic-border rounded-full text-academic-primary">
-                            ${article.category}
+                            ${article.category || 'عام'}
                         </span>
-                        ${isCompleted ? '<svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>' : ''}
+                        ${isCompleted ? '<svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>' : ""}
                     </div>
                     <h3 class="font-bold text-lg mb-2 leading-tight group-hover:text-academic-primary transition-colors">${article.title}</h3>
                     
@@ -293,116 +434,24 @@
                             <span>${progressNum}%</span>
                         </div>
                         <div class="w-full bg-academic-border rounded-full h-2 overflow-hidden">
-                            <div class="h-2 rounded-full ${isCompleted ? 'bg-academic-primary' : 'bg-gray-400'} transition-all duration-1000" style="width: ${progressNum}%"></div>
+                            <div class="h-2 rounded-full ${isCompleted ? "bg-academic-primary" : "bg-gray-400"} transition-all duration-1000" style="width: ${progressNum}%"></div>
                         </div>
                     </div>
                 </div>
             `;
-            articlesGrid.appendChild(card);
-        });
+        articlesGrid.appendChild(card);
+      });
 
-        
-        /* ---------------------------------
-           5. Books Archive Grid
-           --------------------------------- */
-        const booksGrid = document.getElementById('books-grid');
-        const booksFilterButtons = document.querySelectorAll('#books-filter button');
-        
-        const renderBooks = (filter = 'all') => {
-            booksGrid.innerHTML = '';
-            
-            if (typeof academicBooks !== 'undefined' && academicBooks.length > 0) {
-                const filteredBooks = filter === 'all' ? academicBooks : academicBooks.filter(b => b.category === filter);
-                
-                filteredBooks.forEach(book => {
-                    const card = document.createElement('div');
-                    card.className = "group bg-academic-card border border-academic-border flex flex-col items-center p-6 rounded-2xl transition-all hover:-translate-y-1 hover:shadow-xl hover:border-academic-primary/50 text-center relative overflow-hidden";
-                    
-                    // Helper to render link buttons safely
-                    const renderLink = (url, label, iconSvg) => {
-                        if(!url) return '';
-                        return `
-                            <a href="${url}" target="_blank" rel="noopener noreferrer" title="${label}" class="flex items-center justify-center gap-2 px-3 py-2 w-full bg-academic-bg border border-academic-border rounded-lg text-xs font-bold text-academic-text hover:bg-academic-primary hover:text-white transition-all shadow-sm z-20 relative">
-                                ${iconSvg}
-                                <span>${label}</span>
-                            </a>
-                        `;
-                    };
-
-                    const links = book.links || {};
-                    
-                    card.innerHTML = `
-                        <!-- Golden Highlight on Hover -->
-                        <div class="absolute inset-0 bg-gradient-to-b from-yellow-500/0 to-yellow-500/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
-                        
-                        ${book.image ? `
-                            <div class="w-full h-40 mb-4 relative z-10 rounded-lg overflow-hidden border border-academic-border group-hover:border-yellow-600/30 transition-colors">
-                                <img src="${book.image}" alt="${book.title}" class="w-full h-full object-cover">
-                            </div>
-                        ` : `
-                            <div class="w-20 h-28 bg-academic-bg border border-academic-border rounded shadow-sm mb-4 flex flex-col items-center justify-center relative group-hover:border-yellow-600/30 transition-colors z-10">
-                                <svg class="w-10 h-10 text-yellow-600 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477-4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-                                <span class="text-[12px] font-bold opacity-70 tracking-widest">PDF</span>
-                            </div>
-                        `}
-                        <h4 class="font-bold text-sm leading-tight mb-2 relative z-10 min-h-[40px] flex items-center justify-center">${book.title}</h4>
-                        <div class="text-xs opacity-60 relative z-10 mb-4 px-2 py-1 bg-academic-bg rounded-full border border-academic-border">${book.category || 'تحميل مباشر'}</div>
-                        
-                        <details class="w-full mt-auto relative z-20 group/details">
-                            <summary class="flex items-center justify-center gap-2 px-4 py-2 w-full bg-academic-primary text-white rounded-lg text-sm font-bold cursor-pointer hover:bg-academic-hover transition-colors shadow-sm list-none outline-none mb-2">
-                                <svg class="w-4 h-4 transition-transform group-open/details:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                                <span>خيارات التحميل</span>
-                            </summary>
-                            
-                            <div class="flex flex-col w-full gap-2 pt-1 animate-fadeIn">
-                                ${renderLink(links.doi, 'الرابط الأساسي (Zenodo)', '<svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>')}
-                                ${renderLink(links.pdf || book.pdf, 'رابط احتياطي 1 (GitHub)', '<svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>')}
-                                ${renderLink(links.archive, 'رابط احتياطي 2 (Archive)', '<svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path></svg>')}
-                                
-                                <div class="grid grid-cols-2 gap-2 mt-1">
-                                    ${renderLink(links.noor, 'مكتبة نور', '<svg class="w-3 h-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477-4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>')}
-                                    ${renderLink(links.tele, 'التلغرام', '<svg class="w-3 h-3 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.223-.548.223l.188-2.85 5.18-4.686c.223-.204-.054-.31-.35-.11l-6.4 4.02-2.76-.89c-.6-.188-.612-.6.126-.89l10.814-4.17c.5-.188.95.113.82.721z"/></svg>')}
-                                </div>
-                            </div>
-                        </details>
-                    `;
-                    booksGrid.appendChild(card);
-                });
-            }
-        };
-
-        if (typeof academicBooks !== 'undefined' && academicBooks.length > 0) {
-            renderBooks();
-            
-            // Filter logic
-            booksFilterButtons.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    booksFilterButtons.forEach(b => {
-                        b.className = "px-4 py-2 rounded-full bg-academic-card border border-academic-border text-academic-text text-sm font-bold shadow-sm hover:bg-academic-hover transition-colors";
-                    });
-                    
-                    btn.className = "px-4 py-2 rounded-full bg-academic-primary text-white text-sm font-bold shadow-sm transition-colors";
-                    
-                    const filter = btn.getAttribute('data-filter');
-                    renderBooks(filter);
-                });
-            });
-
-            // Update the counter in the UI
-            const booksCounter = document.getElementById('books-counter');
-            if(booksCounter) {
-                booksCounter.textContent = `تصفح الـ ${academicBooks.length} كتاب \u2190`;
-            }
-        }
-
-        /* ---------------------------------
+      /* ---------------------------------
            6. Service Worker
            --------------------------------- */
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/service-worker.js').catch(console.error);
-            });
-        }
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker
+            .register("/service-worker.js")
+            .catch(console.error);
+        });
+      }
     </script>
-</body>
+  </body>
 </html>
